@@ -4,9 +4,16 @@
 ### Added
 
 ### Changed
-- readme
 
 ### Fixed
+
+### Updated
+
+## [8.0.2] - 2024-10-17
+
+
+### Changed
+- readme
 
 ### Updated
 - blocks
