@@ -4,6 +4,7 @@
 ### Added
 
 ### Changed
+- named functions
 
 ### Fixed
 
