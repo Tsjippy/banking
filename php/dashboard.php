@@ -2,7 +2,8 @@
 namespace SIM\BANKING;
 use SIM;
 
-add_action('sim_user_dashboard', function($userId, $admin) {
+add_action('sim_user_dashboard', __NAMESPACE__.'\userDashboard', 10, 2);
+function userDashboard($userId, $admin) {
     if(!$admin){
         ?>
         <div id="Account statements" style="margin-top:20px;">
@@ -12,4 +13,4 @@ add_action('sim_user_dashboard', function($userId, $admin) {
         </div>
         <?php
     }
-}, 10, 2);
+}

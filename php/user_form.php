@@ -3,7 +3,8 @@ namespace SIM\BANKING;
 use SIM;
 
 
-add_filter('sim_before_saving_formdata', function($formResults, $object){
+add_filter('sim_before_saving_formdata', __NAMESPACE__.'\beforeSavingFormData', 10, 2);
+function beforeSavingFormData($formResults, $object){
 	if($object->formData->name != 'user_generics'){
 		return $formResults;
 	}
@@ -36,4 +37,4 @@ add_filter('sim_before_saving_formdata', function($formResults, $object){
 	}
 	
 	return $formResults;
-}, 10, 2);
+}
