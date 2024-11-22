@@ -3,7 +3,8 @@ namespace SIM\BANKING;
 use SIM;
 
 //Remove user page and user marker on user account deletion
-add_action('delete_user', function ($userId){
+add_action('delete_user', __NAMESPACE__.'\userDeleted');
+function userDeleted($userId){
 	$partner	= SIM\hasPartner($userId);
 
 	//Only remove if there is no family
@@ -29,4 +30,4 @@ add_action('delete_user', function ($userId){
 		
 		wp_mail( $user->user_email, $email->subject, $email->message);
 	}
-});
+}
