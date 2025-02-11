@@ -26,13 +26,8 @@ function menuOptions($optionsHtml, $moduleSlug, $settings){
 	return ob_get_clean();
 }
 
-add_filter('sim_module_updated', __NAMESPACE__.'\afterUpdate', 10, 2);
+add_filter('sim_module_banking_after_save', __NAMESPACE__.'\afterUpdate');
 function afterUpdate($options, $moduleSlug){
-	//module slug should be the same as grandparent folder name
-	if($moduleSlug != MODULE_SLUG){
-		return $options;
-	}
-
 	SIM\ADMIN\installPlugin('postie/postie.php');
 
 	return $options;
