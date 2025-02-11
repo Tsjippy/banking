@@ -5,6 +5,7 @@
 
 ### Changed
 - removed anonymous functions
+- sim_module_updated filter to new format
 
 ### Fixed
 
