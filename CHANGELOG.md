@@ -4,13 +4,18 @@
 ### Added
 
 ### Changed
-- removed anonymous functions
-- sim_module_updated filter to new format
-- module hooks now include module slug
 
 ### Fixed
 
 ### Updated
+
+## [8.0.6] - 2025-02-13
+
+
+### Changed
+- removed anonymous functions
+- sim_module_updated filter to new format
+- module hooks now include module slug
 
 ## [8.0.4] - 2024-11-18
 
