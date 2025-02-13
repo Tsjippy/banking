@@ -7,13 +7,8 @@ DEFINE(__NAMESPACE__.'\MODULE_PATH', plugin_dir_path(__DIR__));
 DEFINE(__NAMESPACE__.'\MODULE_SLUG', strtolower(basename(dirname(__DIR__))));
 DEFINE(__NAMESPACE__.'\STATEMENT_FOLDER', wp_get_upload_dir()["basedir"]."/private/account_statements/");
 
-add_filter('sim_submenu_options', __NAMESPACE__.'\menuOptions', 10, 3);
-function menuOptions($optionsHtml, $moduleSlug, $settings){
-	//module slug should be the same as grandparent folder name
-	if($moduleSlug != MODULE_SLUG){
-		return $optionsHtml;
-	}
-
+add_filter('sim_submenu_banking_options', __NAMESPACE__.'\menuOptions', 10, 2);
+function menuOptions($optionsHtml, $settings){
 	ob_start();
 	?>
 	<label>
@@ -23,23 +18,18 @@ function menuOptions($optionsHtml, $moduleSlug, $settings){
 	</label>
 
 	<?php
-	return ob_get_clean();
+	return $optionsHtml.ob_get_clean();
 }
 
 add_filter('sim_module_banking_after_save', __NAMESPACE__.'\afterUpdate');
-function afterUpdate($options, $moduleSlug){
+function afterUpdate($options){
 	SIM\ADMIN\installPlugin('postie/postie.php');
 
 	return $options;
 }
 
-add_filter('sim_email_settings', __NAMESPACE__.'\emailSettings', 10, 3);
-function emailSettings($optionsHtml, $moduleSlug, $settings){
-	//module slug should be the same as grandparent folder name
-	if($moduleSlug != MODULE_SLUG){
-		return $optionsHtml;
-	}
-
+add_filter('sim_email_banking_settings', __NAMESPACE__.'\emailSettings', 10, 2);
+function emailSettings($html, $settings){
 	ob_start();
 
 	?>
@@ -68,5 +58,5 @@ function emailSettings($optionsHtml, $moduleSlug, $settings){
 
 	$emails->printInputs($settings);
 
-	return ob_get_clean();
+	return $html.ob_get_clean();
 }
