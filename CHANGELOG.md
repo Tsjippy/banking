@@ -2,6 +2,7 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
+- 'sim-banking-statement-notification' action hook
 
 ### Changed
 
