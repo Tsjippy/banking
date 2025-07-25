@@ -106,7 +106,7 @@ class AccountStatement{
 	}
 
     /**
-     * Adds the found statment to the usermeta
+     * Adds the found statement to the usermeta
      */
 	public function storeAccountStatement(){
 		$users		= [$this->user];
@@ -152,7 +152,9 @@ class AccountStatement{
 
 			//Send signal message
 			$url	= SIM\pathToUrl(STATEMENT_FOLDER.$this->statementNames[0]);
-			SIM\trySendSignal(
+
+			do_action(
+				'sim-banking-statement-notification', 
 				"Hi $user->first_name,\n\nThe account statement for the month ".date_format($this->postDate, 'F')." just got available on the website. $message\n\nDirect url to the statement:\n$url",
 				$user->ID
 			);
