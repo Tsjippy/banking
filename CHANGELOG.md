@@ -2,13 +2,18 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
-- 'sim-banking-statement-notification' action hook
 
 ### Changed
 
 ### Fixed
 
 ### Updated
+
+## [8.0.7] - 2025-07-25
+
+
+### Added
+- 'sim-banking-statement-notification' action hook
 
 ## [8.0.6] - 2025-02-13
 
