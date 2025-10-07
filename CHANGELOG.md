@@ -4,6 +4,7 @@
 ### Added
 
 ### Changed
+- class- and element names
 
 ### Fixed
 
