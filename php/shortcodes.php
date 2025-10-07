@@ -38,7 +38,7 @@ function showStatements($userId=''){
 	ob_start();
 	
 	?>
-	<div class='account_statements'>
+	<div class='account-statements'>
 		<h3>Account statements</h3>
 		<table id="account_statements">
 			<tbody>
@@ -77,7 +77,7 @@ function printYears($year){
 		$visibility 	= ' style="display:none;"';
 	}
 		
-	echo "<button type='button' class='statement_button button' data-target='_$year'>$buttonText</button>";
+	echo "<button type='button' class='statement-button button' data-target='_$year'>$buttonText</button>";
 	
 	return $visibility;
 }
@@ -116,7 +116,7 @@ function printRows($monthArray, $year, $visibility){
 			continue;
 		}
 		
-		echo "<tr class='_$year'$visibility>";
+		echo "<tr class='-$year'$visibility>";
 			if($firstMonth == $month){
 				echo "<td rowspan='$monthCount'>";
 					echo "<strong>$year<strong>";

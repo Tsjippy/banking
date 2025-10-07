@@ -18,7 +18,7 @@ function toggle_statements(event){
 
 document.addEventListener("DOMContentLoaded",function() {
 	
-	document.querySelectorAll('.statement_button').forEach(function(button){
+	document.querySelectorAll('.statement-button').forEach(function(button){
 		button.addEventListener('click', toggle_statements);
 	})
 });
