@@ -5,6 +5,7 @@
 
 ### Changed
 - class- and element names
+- classnames
 
 ### Fixed
 
