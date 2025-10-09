@@ -40,7 +40,7 @@ function showStatements($userId=''){
 	?>
 	<div class='account-statements'>
 		<h3>Account statements</h3>
-		<table id="account_statements">
+		<table id="account-statements">
 			<tbody>
 				<?php
 				foreach($accountStatements as $year=>$monthArray){

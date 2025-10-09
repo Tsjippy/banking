@@ -1,17 +1,17 @@
 @use '../../../plugins/sim-plugin/includes/css/scss/global' as *;
 
-#account_statements, #account_statements th, #account_statements td{
+#account-statements, #account-statements th, #account-statements td{
 	border: none;
 }
 
 /* Mobile settings*/
 @media screen and (max-width: 800px){	
-	.account_statements td::before{
+	.account-statements td::before{
 		min-width: unset;
 	}
 }
 
-.account_statements .statement-button{
+.account-statements .statement-button{
 	margin-right: 10px; 
 	padding: 0px 10px;
 }

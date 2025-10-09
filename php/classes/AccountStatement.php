@@ -83,7 +83,7 @@ class AccountStatement{
 		//Create a string based on the date
 		$datestring				= date_format($this->postDate, "Y-m");
 		
-		//move to account_statements folder
+		//move to account-statements folder
 		$append					= $this->user->user_login;
 		if(!str_contains($filePath, $datestring)){
 			$append				.= "-$datestring";
