@@ -4,12 +4,17 @@
 ### Added
 
 ### Changed
-- class- and element names
-- classnames
 
 ### Fixed
 
 ### Updated
+
+## [8.0.8] - 2025-10-13
+
+
+### Changed
+- class- and element names
+- classnames
 
 ## [8.0.7] - 2025-07-25
 
