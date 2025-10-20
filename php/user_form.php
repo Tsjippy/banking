@@ -17,7 +17,7 @@ function beforeSavingFormData($formResults, $object){
 	}
 
 	// was not enabled, send e-mail
-	SIM\cleanUpNestedArray($formResults['online_statements']);
+	array_filter($formResults['online_statements']);
 	if(!empty($formResults['online_statements']) && !$enabled){
 		$user		= get_user_by('ID', $object->userId);
 		$email    	= new EnableBanking($user);
