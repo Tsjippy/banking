@@ -109,16 +109,17 @@ class AccountStatement{
      * Adds the found statement to the usermeta
      */
 	public function storeAccountStatement(){
+		$family		= new SIM\FAMILY\Family();
 		$users		= [$this->user];
 
-		$partnerId	= SIM\hasPartner($this->user->ID);
-		if(is_numeric($partnerId)){
-			$users[]	= get_userdata($partnerId);
+		$partner	= $family->getPartner($this->user->ID, true);
+		if($partner){
+			$users[]	= $partner;
 		}
 
 		$year = date_format($this->postDate, "Y");
 		foreach($users as $user){
-			if (SIM\isChild($user->ID)){
+			if ($family->isChild($user->ID)){
 				continue;
 			}
 			

@@ -11,6 +11,8 @@ add_shortcode("account_statements", __NAMESPACE__.'\showStatements');
  * @return string html containing the staement overview
  */
 function showStatements($userId=''){
+	$family	= new SIM\FAMILY\Family();
+
 	if(!is_numeric($userId)){
 		if(isset($_GET["id"]) && is_numeric($_GET["id"])){
 			$userId = $_GET["id"];
@@ -21,7 +23,7 @@ function showStatements($userId=''){
 
 	$accountStatements = get_user_meta($userId, "account_statements", true);
 	
-	if(SIM\isChild($userId) || !is_array($accountStatements)){
+	if($family->isChild($userId) || !is_array($accountStatements)){
 		if(defined('REST_REQUEST')){
 			return 'No statements found';
 		}

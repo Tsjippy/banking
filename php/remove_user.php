@@ -5,7 +5,8 @@ use SIM;
 //Remove user page and user marker on user account deletion
 add_action('delete_user', __NAMESPACE__.'\userDeleted');
 function userDeleted($userId){
-	$partner	= SIM\hasPartner($userId);
+	$family		= new SIM\FAMILY\Family();
+	$partner	= $family->getPartner($userId);
 
 	//Only remove if there is no family
 	if (!$partner){
