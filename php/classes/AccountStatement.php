@@ -23,8 +23,6 @@ class AccountStatement{
 	 * @return	bool	true if id found, false otherwise
 	 */
 	public function checkIfStatement(){
-		SIM\printArray($this->post);
-
 		if(str_contains($this->post['post_title'], 'Worker Account Statement - Nigeria')){
 			$this->user	= get_userdata($this->post['post_author']);
 	
@@ -33,7 +31,6 @@ class AccountStatement{
 			}
 
 			if($this->user && $this->findAccountStatement()){
-
 				$this->storeAccountStatement();
 
 				return true;
@@ -67,8 +64,10 @@ class AccountStatement{
 			$filePath = get_attached_file($attachment->ID);
 
 			if(file_exists($filePath)){
+				$csvFileName			= str_replace('.pdf', '.csv', basename($filePath));
+
 				//Read the contents of the attachment
-				$result					= SIM\PDFTOEXCEL\readPdf($filePath,  wp_upload_dir()['basedir'].'/private/.csv');
+				$result					= SIM\PDFTOEXCEL\readPdf($filePath,  wp_upload_dir()['basedir']."/private/$csvFileName");
 
 				$datestring				= str_replace('/', '-', $result['rows'][0][0]);
 
@@ -77,6 +76,7 @@ class AccountStatement{
 		}
 
 		if(!$this->postDate){
+			SIM\printArray($this->post);
 			return false;
 		}
 		
@@ -123,24 +123,12 @@ class AccountStatement{
 				continue;
 			}
 			
-			//Get the account statement list
-			$accountStatements				= get_user_meta($user->ID, "account_statements", true);
-
-			//create the array if it does not exist
-			if(!is_array($accountStatements)){
-				$accountStatements			= [];
-			}
-			
-			//Create the year array if it does not exist
-			if(!isset($accountStatements[$year]) || (isset($accountStatements[$year]) && !is_array($accountStatements[$year]))){
-				$accountStatements[$year]	= [];
-			}
-			
-			//Add the new statement to the year array
-			$accountStatements[$year][date_format($this->postDate, "F")] = $this->statementNames;
-			
 			//Update the list
-			update_user_meta($user->ID, "account_statements", $accountStatements);
+			add_user_meta($user->ID, "account_statements", [
+				'year'	=> $year,
+				'month'	=> date_format($this->postDate, "F"),
+				'files'	=> $this->statementNames
+			]);
 			
 			// Get account page
 			$accountUrl		= SIM\ADMIN\getDefaultPageLink('usermanagement', 'account_page');

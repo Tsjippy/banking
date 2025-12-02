@@ -21,21 +21,30 @@ function showStatements($userId=''){
 		}
 	}
 
-	$accountStatements = get_user_meta($userId, "account_statements", true);
+	$accountStatements = get_user_meta($userId, "account_statements");
 	
-	if($family->isChild($userId) || !is_array($accountStatements)){
+	if($family->isChild($userId) || empty($accountStatements)){
 		if(defined('REST_REQUEST')){
 			return 'No statements found';
 		}
 		return '';
 	}
+	
+	$years	= [];
+	foreach($accountStatements as $data){
+		$year	= $data['year'];
+		if(empty($years[$year])){
+			$years[$year]	= [];
+		}
+
+		$years[$year][$data['month']]	= $data['files'];
+	}
+
 
 	//Load js
 	wp_enqueue_style('sim_account_statements_style');
 	
 	wp_enqueue_script('sim_account_statements_script');
-
-	ksort($accountStatements);
 
 	ob_start();
 	
@@ -45,14 +54,10 @@ function showStatements($userId=''){
 		<table id="account-statements">
 			<tbody>
 				<?php
-				foreach($accountStatements as $year=>$monthArray){
+				foreach($years as $year => $months){
 					$visibility	= printYears($year);
 
-					if(!is_array($monthArray)){
-						continue;
-					}
-
-					printRows($monthArray, $year, $visibility);
+					printRows($months, $year, $visibility);
 				}
 				?>
 			</tbody>

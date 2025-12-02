@@ -11,13 +11,14 @@ function userDeleted($userId){
 	//Only remove if there is no family
 	if (!$partner){
 		//Remove account statements
-		$accountStatements = get_user_meta($userId, "account_statements", true);
-		if(is_array($accountStatements)){
-			foreach($accountStatements as $years){
-				foreach($years as $accountStatement){
-					$filePath = STATEMENT_FOLDER.$accountStatement;
-					unlink($filePath);
+		$accountStatements = get_user_meta($userId, "account_statements");
+		foreach($accountStatements as $data){
+			foreach($data['files'] as $file){
+				if(!is_array($file)){
+					$file = [$file];
 				}
+				
+				wp_delete_file($file);
 			}
 		}
     }
