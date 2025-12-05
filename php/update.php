@@ -34,8 +34,3 @@ function moduleUpdate($oldVersion){
         }
     }
 }
-
-add_action('init', function(){
-    //moduleUpdate('8.1.2');
-    //testMailImport();
-});
