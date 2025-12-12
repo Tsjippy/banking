@@ -3,7 +3,7 @@ namespace SIM\BANKING;
 use SIM;
 
 
-add_filter('sim_before_saving_formdata', __NAMESPACE__.'\beforeSavingFormData', 10, 2);
+add_filter('sim_before_inserting_formdata', __NAMESPACE__.'\beforeSavingFormData', 10, 2);
 function beforeSavingFormData($submission, $object){
 	if($object->formData->name != 'user_generics'){
 		return $submission;
