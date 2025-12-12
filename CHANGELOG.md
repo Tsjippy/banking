@@ -6,6 +6,7 @@
 ### Changed
 
 ### Fixed
+- changing payment status
 
 ### Updated
 
