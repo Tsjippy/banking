@@ -4,12 +4,17 @@
 ### Added
 
 ### Changed
-- deps
-- removed e-mails
 
 ### Fixed
 
 ### Updated
+
+## [8.1.5] - 2026-01-12
+
+
+### Changed
+- deps
+- removed e-mails
 
 ## [8.1.4] - 2025-12-12
 
