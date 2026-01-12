@@ -27,36 +27,3 @@ function afterUpdate($options){
 
 	return $options;
 }
-
-add_filter('sim_email_banking_settings', __NAMESPACE__.'\emailSettings', 10, 2);
-function emailSettings($html, $settings){
-	ob_start();
-
-	?>
-	<label>
-		Define the e-mail sent to the finance team when someone enables account statements on the website
-	</label>
-	<br>
-
-	<?php
-	$emails    = new EnableBanking(wp_get_current_user());
-	$emails->printPlaceholders();
-	?>
-
-	<h4>E-mail when enabled</h4>
-	<?php
-
-	$emails->printInputs($settings);
-	
-	?>
-	<br>
-	<br>
-	<h4>E-mail when disabled</h4>
-	<?php
-
-	$emails    = new DisableBanking(wp_get_current_user());
-
-	$emails->printInputs($settings);
-
-	return $html.ob_get_clean();
-}
