@@ -5,6 +5,7 @@
 
 ### Changed
 - deps
+- removed e-mails
 
 ### Fixed
 
