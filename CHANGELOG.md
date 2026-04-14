@@ -4,6 +4,7 @@
 ### Added
 
 ### Changed
+- support transform from functions tab
 
 ### Fixed
 
