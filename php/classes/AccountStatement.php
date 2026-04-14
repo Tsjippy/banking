@@ -23,18 +23,16 @@ class AccountStatement{
 	 * @return	bool	true if id found, false otherwise
 	 */
 	public function checkIfStatement(){
-		if(str_contains($this->post['post_title'], 'Worker Account Statement - Nigeria')){
-			$this->user	= get_userdata($this->post['post_author']);
-	
-			if(!$this->user){
-				return false;
-			}
+		$this->user	= get_userdata($this->post['post_author']);
 
-			if($this->user && $this->findAccountStatement()){
-				$this->storeAccountStatement();
+		if(!$this->user){
+			return false;
+		}
 
-				return true;
-			}
+		if($this->user && $this->findAccountStatement()){
+			$this->storeAccountStatement();
+
+			return true;
 		}
 
 		return false;
