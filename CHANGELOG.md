@@ -5,6 +5,7 @@
 
 ### Changed
 - support transform from functions tab
+- main plugin name from sim-base to tsjippy-shared-functionality
 
 ### Fixed
 
